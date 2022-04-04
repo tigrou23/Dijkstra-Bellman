@@ -12,11 +12,15 @@ public class Arc {
 		poids = p;
 	}
 	
-	public Arc(int s1, int s2) {
-		this(s1, s2, 0);
-	}
-	
 	public int getPoids() {
 		return poids;
+	}
+
+	public int getSommet1(){
+		return sommet1;
+	}
+
+	public int getSommet2(){
+		return sommet2;
 	}
 }

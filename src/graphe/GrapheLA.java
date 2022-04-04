@@ -36,9 +36,9 @@ public class GrapheLA implements IGraph{
 	 * @param n1 le noeud n1
 	 * @param n2 le noeud n2
 	 */
-	public void ajouterArc(int n1, int n2) {
+	public void ajouterArc(int n1, int n2, int poids) {
 		assert(n1>0 && n1<=nb_noeuds && n2>0 && n2<=nb_noeuds);
-		LA.get(n1).add(n2);
+		arc.add(new Arc(n1, n2, poids));
 	}
 
 	/**
@@ -106,4 +106,16 @@ public class GrapheLA implements IGraph{
 		}
 		return sb.toString();
 	}
+
+	@Override
+	public Arc getArc(int s1, int s2) {
+		for ( int i = 0; i<arc.size()-1; i++){
+			if (arc.get(i).getSommet1() == s1 && arc.get(i).getSommet1() == s2){
+				return arc.get(i);
+			}
+		}
+		return null;
+	}
+
+
 }
