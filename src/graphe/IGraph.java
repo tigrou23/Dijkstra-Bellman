@@ -2,16 +2,16 @@ package graphe;
 
 public interface IGraph {
 	
-	public void ajouterArc(int n1, int n2);
+	void ajouterArc(int n1, int n2);
 	
-	public int getNbNoeuds();
+	int getNbNoeuds();
 
-	public boolean aArc(int n1, int n2);
+	boolean aArc(int n1, int n2);
 
-	public int dOut(int n);
+	int dOut(int n);
 				
-	public int dIn(int n);
+	int dIn(int n);
 
-	public String toString();
+	String toString();
 
 }
