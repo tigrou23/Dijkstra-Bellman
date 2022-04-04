@@ -10,6 +10,9 @@ public class GrapheLA implements IGraph{
 	// de tous ses successeurs)
 	private HashMap<Integer, ArrayList<Integer>> LA;
 
+	// ArrayList d'arcs qui stocke tous les arcs du graphes 
+	private ArrayList<Arc> arc;
+	
 	// Le nombre de noeuds du graphe
 	private int nb_noeuds;
 
@@ -19,6 +22,7 @@ public class GrapheLA implements IGraph{
 	 * @param nb_noeuds le nombre de noeuds
 	 */
 	public GrapheLA(int nb_noeuds) {
+		arc = new ArrayList<>();
 		LA = new HashMap<>(nb_noeuds);
 		this.nb_noeuds = nb_noeuds;
 		for (int i = 1; i <= nb_noeuds; ++i) {

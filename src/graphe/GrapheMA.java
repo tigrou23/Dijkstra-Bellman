@@ -1,8 +1,14 @@
 package graphe;
+
+import java.util.ArrayList;
+
 public class GrapheMA {
 
 	// Double tableau de booleens qui represente la matrice adjacente du graphe
 	private boolean[][] MA;
+	
+	// ArrayList d'arcs qui stocke tous les arcs du graphes 
+	private ArrayList<Arc> arc;
 
 	// Le nombre de noeuds du graphe
 	private int nb_noeuds;
@@ -13,6 +19,7 @@ public class GrapheMA {
 	 * @param nb_noeuds le nombre de noeuds
 	 */
 	public GrapheMA(int nb_noeuds) {
+		arc = new ArrayList<>();
 		MA = new boolean[nb_noeuds][nb_noeuds];
 		this.nb_noeuds = nb_noeuds;
 		for (int i = 0; i < nb_noeuds; ++i) {
