@@ -20,8 +20,16 @@ class GrapheLATest {
 		g.ajouterArc(2, 5);
 		g.ajouterArc(4, 4);
 		g.ajouterArc(5, 1);*/
+		g.ajouterArc(1,3,7);
+		g.ajouterArc(1,4,15);
+		g.ajouterArc(2,4,21);
+		g.ajouterArc(3,2,13);
+		g.ajouterArc(3,5,3);
+		g.ajouterArc(5,1,1);
+		g.ajouterArc(5,2,9);
+		g.ajouterArc(5,4,17);
 
-		assertTrue(g.aArc(1, 5));
+		assertTrue(g.aArc(1, 3));
 		assertTrue(g.aArc(4, 4));
 		assertTrue(g.aArc(5, 1));
 		assertFalse(g.aArc(4, 1));

@@ -126,4 +126,14 @@ public class GrapheMA implements IGraph{
 		}
 		return null;
 	}
+	
+	//test
+	public ArrayList<Arc> getArcSommet(int s) {
+		ArrayList<Arc> listArc = new ArrayList<>();
+		for(int i = 0; i<arc.size()-1 ; i++) {
+			if(arc.get(i).getSommet1() == s){
+				listArc.add(arc.get(i));
+			}	
+		}return listArc;
+	}
 }

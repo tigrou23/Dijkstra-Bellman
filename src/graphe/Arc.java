@@ -23,4 +23,8 @@ public class Arc {
 	public int getSommet2(){
 		return sommet2;
 	}
+	
+	public String toString() {
+		return sommet1 + " -> " + sommet2;
+	}
 }
