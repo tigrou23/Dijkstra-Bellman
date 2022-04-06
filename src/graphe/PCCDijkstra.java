@@ -11,6 +11,17 @@ public class PCCDijkstra {
 	public PCCDijkstra(IGraph g) {
 		graphe = g;
 	}
+	
+	public Boolean estOk() {
+		ArrayList<Arc> test = new ArrayList<>(); 
+		for(int i = 0; i < graphe.getNbNoeuds(); i++) {
+			test = graphe.getArcSommet(i);
+			for (int j = 0; j < test.size(); j++ ) {
+				if(test.get(j).getPoids() <= 0)
+					return false;
+			}
+		}return true;
+	}
 
 	public ArrayList<Integer> resoudre(int debut, int fin) {
 		
