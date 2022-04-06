@@ -1,6 +1,6 @@
 package appli;
 import graphe.GrapheLA;
-//test
+
 public class Appli {
 
 	public static void main(String[] args) {
