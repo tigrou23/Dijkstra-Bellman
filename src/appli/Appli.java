@@ -29,7 +29,7 @@ public class Appli {
 		g.ajouterArc(5,4,17);
 		
 		PCCDijkstra p = new PCCDijkstra(g);
-		if(p.estOk())p.resoudre(1,2);
+		if(p.estOk())p.resoudre(1,5);
 				
 	}
 

@@ -3,14 +3,14 @@ package graphe;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Objects;
 
-public class PCCDijkstra {
-
-	private IGraph graphe;
+public class PCCDijkstra extends PlusCourtChemin{
 
 	public PCCDijkstra(IGraph g) {
 		graphe = g;
 	}
+	
 	
 	public Boolean estOk() {
 		ArrayList<Arc> test = new ArrayList<>(); 
@@ -77,7 +77,7 @@ public class PCCDijkstra {
 				tmp2.remove(new Integer(-1));
 			}
 			for (int i = 0; i < graphe.getNbNoeuds(); i++) {
-				if (tabPoids.get(i) == Collections.min(tmp2)) { //on cherche à quel sommet appartient le plus petit poids de la ligne
+				if (Objects.equals(tabPoids.get(i), Collections.min(tmp2))) { //on cherche à quel sommet appartient le plus petit poids de la ligne
 					debut = i; //une fois trouvé, on remplace debut par le sommet (i)
 					break;
 				}
