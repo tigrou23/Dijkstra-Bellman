@@ -54,12 +54,15 @@ public class PCCDijkstra extends PlusCourtChemin{
 			tmp = 0;
 			for (int i = 0; i < graphe.getNbNoeuds(); i++) { 
 				if (listeArc.contains(graphe.getArc(debut + 1, i + 1))) { // on regarde si l'arc qu'on crée avec la boucle est un arc qui part du sommet (c-a-d qu'il se trouve dans l'ArrayList des arcs du sommet)
-					if (tabPoids.get(i) == -1 && tabPoids.get(i) != 0) { // si il y a un + infini dans la case (-1) et que ce n'est pas égal à 0 (ça voudrait dire que le sommet est barré) alors on met comme valeur le poids (cf. ligne 68)
+					//System.out.println(" " + tmp + " " + poids + listeArc.get(tmp).getPoids() + " ");
+
+					if (tabPoids.get(i) == -1) { // si il y a un + infini dans la case (-1) et que ce n'est pas égal à 0 (ça voudrait dire que le sommet est barré) alors on met comme valeur le poids (cf. ligne 68)
 						tabPoids.put(graphe.getArc(debut + 1, i + 1).getSommet2() - 1,
 								poids + graphe.getArc(debut + 1, i + 1).getPoids()); // on ajoute donc le poids + le poids de l'arc.
 						tabPredecesseur.put(graphe.getArc(debut + 1, i + 1).getSommet2() - 1, debut); // on marque le sommet précédent pour retrouver le chemin après
 					}
-					if (poids + listeArc.get(tmp).getPoids() < tabPoids.get(i) && tabPoids.get(i) != 0) { // si il y a déjà une valeur dans la case. On vérifié que si on additionne le poids avec le poid de l'arc c'est plus petit que la valeur de la case. Si c'est plus petit on remplace la valeur et on remplace le sommet précédent par le nouveau
+					else if (poids + listeArc.get(tmp).getPoids() < tabPoids.get(i)) { // si il y a déjà une valeur dans la case. On vérifié que si on additionne le poids avec le poid de l'arc c'est plus petit que la valeur de la case. Si c'est plus petit on remplace la valeur et on remplace le sommet précédent par le nouveau
+						System.out.println(" je rentre ");
 						tabPoids.put(graphe.getArc(debut + 1, i + 1).getSommet2() - 1,
 								poids + graphe.getArc(debut + 1, i + 1).getPoids());
 						tabPredecesseur.put(graphe.getArc(debut + 1, i + 1).getSommet2() - 1, debut);
@@ -67,7 +70,7 @@ public class PCCDijkstra extends PlusCourtChemin{
 					tmp += 1; //le tmp sert à regarder dans un ordre croissant les arcs dans la liste d'arc. Par exemple, on va regarder le plus petit (à l'indice 0) mais si cet arc n'est pas utilisable (par exemple parce que B est entouré (=0)) bah on va augmenter le compteur pour voir à 1, etc...
 				}
 			}
-			
+			System.out.println(tabPoids);
 			//Cette liste va récupérer tous les poids d'une ligne pour enlever tous les cases de la ligne inutilisables (celles qui sont à 0 ou -1)
 			ArrayList<Integer> tmp2 = new ArrayList<>(); //faudra qu'on la déclare en haut et qu'on supprime son contenu mais j'ai pas le temps je dois partir.
 			tmp2.addAll(tabPoids.values());
