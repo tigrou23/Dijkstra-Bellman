@@ -3,7 +3,10 @@ package graphe;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Objects;
+
+import exception.ArcNegatifNulException;
 
 public class PCCDijkstra{
 
@@ -18,15 +21,17 @@ public class PCCDijkstra{
 		}return true;
 	}
 
-	public static ArrayList<Integer> resoudre(IGraph graphe ,int debut, int fin) throws ArcNegatifException{
+	public static List<Integer> resoudre(IGraph graphe ,int debut, int fin) throws ArcNegatifNulException{
 		
 		// /!\ mon code est vraiment basé sur le tableau qu'on a pu faire pour résoudre Djikstra
 		
 		// TODO : faire des méthodes privates pour alléger la méthode.
 		// TODO : faire des tests
-		if(estOk(graphe))
+		if(Boolean.TRUE.equals(estOk(graphe)))
 		{
-			int poids = 0, debutStatic = debut, somme;
+			int poids = 0;
+			int debutStatic = debut;
+			int somme;
 			ArrayList<Integer> chemin = new ArrayList<>(); //va recevoir le chemin final pour accèder de début à fin
 			ArrayList<Arc> listeArc = new ArrayList<Arc>(); //va nous servir à récupérer une liste avec tous les arcs d'un sommet
 			ArrayList<Integer> tmp = new ArrayList<>();//Cette liste va récupérer tous les poids d'une ligne pour enlever tous les cases de la ligne inutilisables (celles qui sont à 0 ou -1)
@@ -92,7 +97,7 @@ public class PCCDijkstra{
 			return chemin;
 		}
 		else
-			throw new ArcNegatifException();
+			throw new ArcNegatifNulException();
 	}
 	
 }
