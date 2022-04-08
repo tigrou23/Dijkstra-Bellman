@@ -3,9 +3,9 @@ import graphe.GrapheLA;
 import graphe.IGraph;
 import graphe.PCCDijkstra;
 
-public class Appli {
+public class Appli{
 
-	public static void main(String[] args) {
+	public static void main(String[] args){
 		final int NB_NOEUDS = 5;
 		//GrapheLA g = new GrapheLA(NB_NOEUDS);
 		
@@ -54,8 +54,7 @@ public class Appli {
 		
 		g.ajouterArc(9,8,10);
 		
-		PCCDijkstra p = new PCCDijkstra(g);
-		p.resoudre(8,6);
+		PCCDijkstra.resoudre(g,8,6);
 				
 	}
 
