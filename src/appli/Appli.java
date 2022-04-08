@@ -54,9 +54,7 @@ public class Appli{
 		g.ajouterArc(8,6,4);
 		
 		g.ajouterArc(9,8,10);
-		
-		PCCDijkstra.resoudre(g,9,8);
-				
+		PCCDijkstra.resoudre(g,8,6);
 	}
 
 }

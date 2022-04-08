@@ -13,7 +13,7 @@ public class PCCDijkstra{
 	private static Boolean estOk(IGraph graphe) {
 		ArrayList<Arc> test = new ArrayList<>(); 
 		for(int i = 0; i < graphe.getNbNoeuds(); i++) {
-			test = graphe.getArcSommet(i);
+			test = graphe.getArcSommet(i+1);
 			for (int j = 0; j < test.size(); j++ ) {
 				if(test.get(j).getPoids() <= 0)
 					return false;
