@@ -1,15 +1,13 @@
 package test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import graphe.GrapheLA;
-import graphe.GrapheMA;
-import graphe.IGraph;
+import exception.ArcNegatifNulException;
+import graphe.*;
 
 public class PCCDijkstra {
 	
@@ -81,7 +79,7 @@ public class PCCDijkstra {
 	@Test
 	void estOkTest() {
 		
-		IGraph g = new GrapheMA(7);
+		IGraph g = new GrapheMA(8);
 		
 		//Exercice 3.6
 		g.ajouterArc(1,3,1);
@@ -97,9 +95,9 @@ public class PCCDijkstra {
 		g.ajouterArc(6,4,5);
 		g.ajouterArc(6,5,3);
 		g.ajouterArc(7,8,4);
-		assertTrue(!graphe.PCCDijkstra.estOk(g));
-
+		assertThrows(ArcNegatifNulException.class, () -> graphe.PCCDijkstra.resoudre(g,1,3));
 	}
+
 
 }
 
