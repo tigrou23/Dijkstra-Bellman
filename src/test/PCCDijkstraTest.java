@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import exception.ArcNegatifNulException;
 import graphe.*;
 
-public class PCCDijkstra {
+public class PCCDijkstraTest {
 	
 	@Test
 	void resoudreTest() {
