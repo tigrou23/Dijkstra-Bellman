@@ -1,4 +1,7 @@
 package appli;
+import java.util.ArrayList;
+import java.util.List;
+
 import graphe.GrapheLA;
 import graphe.GrapheMA;
 import graphe.IGraph;
@@ -34,27 +37,22 @@ public class Appli{
 		IGraph g = new GrapheMA(9);
 		g.ajouterArc(1,4,1);
 		g.ajouterArc(1,3,2);
-		
 		g.ajouterArc(2,7,3);
-		
 		g.ajouterArc(3,8,2);
-		
 		g.ajouterArc(4,2,3);
 		g.ajouterArc(4,5,3);
 		g.ajouterArc(4,3,5);
-		
 		g.ajouterArc(5,7,3);
 		g.ajouterArc(5,8,7);
 		g.ajouterArc(5,3,1);
-		
 		g.ajouterArc(7,2,2);
 		g.ajouterArc(7,6,1);
-		
 		g.ajouterArc(8,7,2);
 		g.ajouterArc(8,6,4);
-		
 		g.ajouterArc(9,8,10);
-		PCCDijkstra.resoudre(g,8,6);
+		List<Integer> test = new ArrayList<>();
+		test = PCCDijkstra.resoudre(g,8,6);
+		System.out.println(test);
 	}
 
 }

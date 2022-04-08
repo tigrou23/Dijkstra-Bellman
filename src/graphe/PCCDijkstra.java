@@ -78,7 +78,7 @@ public class PCCDijkstra{
 					}
 				}
 				poids = tabPoids.get(debut); //on ajoute au poids la valeur du sommet qu'on vient de choisir (celui qu'on entoure parce qu'il a la plus petite valeur)
-				System.out.println(tabPoids); //si on décommente on peut voir le tableau (magique !)
+				//System.out.println(tabPoids); //si on décommente on peut voir le tableau (magique !)
 			}
 			
 			//c'est ici qu'on se sert du tableau des prédécesseurs. On va remonter tout le tableau... Jvous jure ça marche.
@@ -91,9 +91,9 @@ public class PCCDijkstra{
 			Collections.reverse(chemin); //explicite
 			
 			//juste pour afficher (pour mes tests perso)
-			for (int i = 0; i < chemin.size(); i++) {
+			/*for (int i = 0; i < chemin.size(); i++) {
 				System.out.print(chemin.get(i) + " ");
-			}
+			}*/
 			return chemin;
 		}
 		else
