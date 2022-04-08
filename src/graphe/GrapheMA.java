@@ -119,8 +119,8 @@ public class GrapheMA implements IGraph{
 
 	@Override
 	public Arc getArc(int s1, int s2) {
-		for ( int i = 0; i<arc.size()-1; i++){
-			if (arc.get(i).getSommet1() == s1 && arc.get(i).getSommet1() == s2){
+		for ( int i = 0; i<arc.size(); i++){
+			if (arc.get(i).getSommet1() == s1 && arc.get(i).getSommet2() == s2){
 				return arc.get(i);
 			}
 		}
@@ -130,7 +130,7 @@ public class GrapheMA implements IGraph{
 	//test
 	public ArrayList<Arc> getArcSommet(int s) {
 		ArrayList<Arc> listArc = new ArrayList<>();
-		for(int i = 0; i<arc.size()-1 ; i++) {
+		for(int i = 0; i<arc.size(); i++) {
 			if(arc.get(i).getSommet1() == s){
 				listArc.add(arc.get(i));
 			}	

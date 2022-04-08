@@ -124,7 +124,7 @@ public class GrapheLA implements IGraph{
 	//test
 	public ArrayList<Arc> getArcSommet(int s) {
 		ArrayList<Arc> listArc = new ArrayList<>();
-		for(int i = 0; i<arc.size()-1 ; i++) {
+		for(int i = 0; i<arc.size() ; i++) {
 			if(arc.get(i).getSommet1() == s){
 				listArc.add(arc.get(i));
 			}	

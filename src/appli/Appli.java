@@ -1,5 +1,6 @@
 package appli;
 import graphe.GrapheLA;
+import graphe.GrapheMA;
 import graphe.IGraph;
 import graphe.PCCDijkstra;
 
@@ -30,7 +31,7 @@ public class Appli{
 		PCCDijkstra p = new PCCDijkstra(g);
 		if(p.estOk())p.resoudre(1,5);*/
 		
-		IGraph g = new GrapheLA(9);
+		IGraph g = new GrapheMA(9);
 		g.ajouterArc(1,4,1);
 		g.ajouterArc(1,3,2);
 		
@@ -54,7 +55,7 @@ public class Appli{
 		
 		g.ajouterArc(9,8,10);
 		
-		PCCDijkstra.resoudre(g,8,6);
+		PCCDijkstra.resoudre(g,9,8);
 				
 	}
 
