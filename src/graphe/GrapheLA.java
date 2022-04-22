@@ -108,7 +108,14 @@ public class GrapheLA implements IGraph{
 		}
 		return sb.toString();
 	}
-
+	
+	/**
+	 * Mehode qui retourne l'arc entre deux sommets
+	 * 
+	 * @param s1 le sommet d'où part l'arc
+	 * @param s2 le sommet où arrive l'arc
+	 * @return l'arc en question
+	 */
 	public Arc getArc(int s1, int s2) {
 		for ( int i = 0; i<arc.size(); i++){
 			
@@ -120,16 +127,13 @@ public class GrapheLA implements IGraph{
 		return null;
 	}
 	
+	/**
+	 * Mehode fournit un liste d'arcs qui arrivent au sommet s
+	 * 
+	 * @param s le sommet
+	 * @return la liste d'arc
+	 */
 	public ArrayList<Arc> getArcPredecesseur(int s) {
-		ArrayList<Arc> listArc = new ArrayList<>();
-		for(int i = 0; i<arc.size() ; i++) {
-			if(arc.get(i).getSommet1() == s){
-				listArc.add(arc.get(i));
-			}	
-		}return listArc;
-	}
-	
-	public ArrayList<Arc> getArcSuccesseur(int s) {
 		ArrayList<Arc> listArc = new ArrayList<>();
 		for(int i = 0; i<arc.size() ; i++) {
 			if(arc.get(i).getSommet2() == s){
@@ -137,5 +141,21 @@ public class GrapheLA implements IGraph{
 			}	
 		}return listArc;
 	}
+	
+	/**
+	 * Mehode fournit un liste d'arcs qui partent du sommet s
+	 * 
+	 * @param s le sommet
+	 * @return la liste d'arc
+	 */
+	public ArrayList<Arc> getArcSuccesseur(int s) {
+		ArrayList<Arc> listArc = new ArrayList<>();
+		for(int i = 0; i<arc.size() ; i++) {
+			if(arc.get(i).getSommet1() == s){
+				listArc.add(arc.get(i));
+			}	
+		}return listArc;
+	}
+
 
 }
