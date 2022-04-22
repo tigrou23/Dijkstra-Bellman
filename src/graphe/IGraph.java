@@ -17,7 +17,9 @@ public interface IGraph {
 	int dIn(int n);
 
 	String toString();
+		
+	ArrayList<Arc> getArcPredecesseur(int s);
 	
-	ArrayList<Arc> getArcSommet(int s);
+	ArrayList<Arc> getArcSuccesseur(int s);
 
 }

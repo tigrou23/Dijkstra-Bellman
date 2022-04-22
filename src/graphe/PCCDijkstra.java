@@ -13,7 +13,7 @@ public class PCCDijkstra{
 	private static Boolean estOk(IGraph graphe) {
 		ArrayList<Arc> test = new ArrayList<>(); 
 		for(int i = 0; i < graphe.getNbNoeuds(); i++) {
-			test = graphe.getArcSommet(i+1);
+			test = graphe.getArcSuccesseur(i+1);
 			for (int j = 0; j < test.size(); j++ ) {
 				if(test.get(j).getPoids() <= 0)
 					return false;
@@ -25,8 +25,6 @@ public class PCCDijkstra{
 		
 		// /!\ mon code est vraiment basé sur le tableau qu'on a pu faire pour résoudre Djikstra
 		
-		// TODO : faire des méthodes privates pour alléger la méthode.
-		// TODO : faire des tests
 		if(Boolean.TRUE.equals(estOk(graphe)))
 		{
 			int poids = 0;
@@ -46,7 +44,7 @@ public class PCCDijkstra{
 			debut -= 1;//ça simplifie pour utiliser comme index dans les tableaux
 			while (debut + 1 != fin) {
 				tabPoids.put(debut, 0); //on met le sommet qu'on vient d'entourer à 0 pour pas qu'il soit pris dans nos calculs. Je ne pouvais pas le supprimer de la Hashmap car ça faussait les boucles (qui se basent sur le nombre de sommets dans la Hashmap)
-				listeArc = graphe.getArcSommet(debut + 1); //on récupère tous les arcs qui partent de notre sommet qu'on vient d'entourer
+				listeArc = graphe.getArcSuccesseur(debut + 1); //on récupère tous les arcs qui partent de notre sommet qu'on vient d'entourer
 				for (int i = 0; i < graphe.getNbNoeuds(); i++) { 
 					if (listeArc.contains(graphe.getArc(debut + 1, i + 1))) { // on regarde si l'arc qu'on crée avec la boucle est un arc qui part du sommet (c-a-d qu'il se trouve dans l'ArrayList des arcs du sommet)
 						somme = poids + graphe.getArc(debut + 1, i + 1).getPoids(); //cf. ligne 58
@@ -78,10 +76,10 @@ public class PCCDijkstra{
 					}
 				}
 				poids = tabPoids.get(debut); //on ajoute au poids la valeur du sommet qu'on vient de choisir (celui qu'on entoure parce qu'il a la plus petite valeur)
-				//System.out.println(tabPoids); //si on décommente on peut voir le tableau (magique !)
+				//System.out.println(tabPoids); //si on décommente on peut voir le fameux tableau de Djikstra !
 			}
 			
-			//c'est ici qu'on se sert du tableau des prédécesseurs. On va remonter tout le tableau... Jvous jure ça marche.
+			//c'est ici qu'on se sert du tableau des prédécesseurs. On va remonter tout le tableau... .
 			int temporaire = fin - 1;
 			chemin.add(temporaire + 1);
 			while (temporaire + 1 != debutStatic) {

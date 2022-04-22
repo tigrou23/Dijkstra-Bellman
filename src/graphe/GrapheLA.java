@@ -109,7 +109,6 @@ public class GrapheLA implements IGraph{
 		return sb.toString();
 	}
 
-	@Override
 	public Arc getArc(int s1, int s2) {
 		for ( int i = 0; i<arc.size(); i++){
 			
@@ -121,8 +120,7 @@ public class GrapheLA implements IGraph{
 		return null;
 	}
 	
-	//test
-	public ArrayList<Arc> getArcSommet(int s) {
+	public ArrayList<Arc> getArcPredecesseur(int s) {
 		ArrayList<Arc> listArc = new ArrayList<>();
 		for(int i = 0; i<arc.size() ; i++) {
 			if(arc.get(i).getSommet1() == s){
@@ -130,6 +128,14 @@ public class GrapheLA implements IGraph{
 			}	
 		}return listArc;
 	}
-
+	
+	public ArrayList<Arc> getArcSuccesseur(int s) {
+		ArrayList<Arc> listArc = new ArrayList<>();
+		for(int i = 0; i<arc.size() ; i++) {
+			if(arc.get(i).getSommet2() == s){
+				listArc.add(arc.get(i));
+			}	
+		}return listArc;
+	}
 
 }
