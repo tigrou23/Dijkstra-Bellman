@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import exception.ArcNegatifNulException;
+import exception.*;
 import graphe.*;
 
 public class PCCBellmanTest {
@@ -45,6 +45,19 @@ public class PCCBellmanTest {
 		reponse.add(1); reponse.add(2); reponse.add(3);
 		assertTrue(reponse.equals(graphe.PCCBellman.resoudre(g,1,3)));
 		reponse.clear();
+	}
+	
+	@Test
+	void estOkTest() {
+		
+		//graphe du sujet
+		IGraph g = new GrapheMA(4);
+		g.ajouterArc(1,2,5);
+		g.ajouterArc(1,3,4);
+		g.ajouterArc(3,2,6);
+		g.ajouterArc(2,4,3);
+		g.ajouterArc(4,3,2);
+		assertThrows(CircuitEx.class, () -> graphe.PCCDijkstra.resoudre(g,1,3));
 	}
 	
 

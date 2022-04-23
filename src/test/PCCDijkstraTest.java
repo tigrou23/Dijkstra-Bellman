@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import exception.ArcNegatifNulException;
+import exception.*;
 import graphe.*;
 
 public class PCCDijkstraTest {
@@ -96,6 +96,24 @@ public class PCCDijkstraTest {
 		g.ajouterArc(6,5,3);
 		g.ajouterArc(7,8,4);
 		assertThrows(ArcNegatifNulException.class, () -> graphe.PCCDijkstra.resoudre(g,1,3));
+		
+		/*IGraph g2 = new GrapheMA(9);
+		g2.ajouterArc(1,4,1);
+		g2.ajouterArc(1,3,2);
+		g2.ajouterArc(2,7,3);
+		g2.ajouterArc(3,8,2);
+		g2.ajouterArc(4,2,3);
+		g2.ajouterArc(4,5,3);
+		g2.ajouterArc(4,3,5);
+		g2.ajouterArc(5,7,3);
+		g2.ajouterArc(5,8,7);
+		g2.ajouterArc(5,3,1);
+		g2.ajouterArc(7,2,2);
+		g2.ajouterArc(7,6,1);
+		g2.ajouterArc(8,7,2);
+		g2.ajouterArc(8,6,4);
+		g2.ajouterArc(9,8,10);
+		assertThrows(NoPathEx.class, () -> graphe.PCCDijkstra.resoudre(g2,1,9));*/
 	}
 
 
