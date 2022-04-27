@@ -26,8 +26,7 @@ public class GrapheLA implements IGraphe{
 		LA = new HashMap<>(nb_noeuds);
 		this.nb_noeuds = nb_noeuds;
 		for (int i = 1; i <= nb_noeuds; ++i) {
-			Sommet s = new Sommet(i);
-			LA.put(s.getSommet(), new ArrayList<>());
+			LA.put(i, new ArrayList<>());
 		}
 	}
 
@@ -76,9 +75,8 @@ public class GrapheLA implements IGraphe{
 	 */
 	public int dOut(int n) {
 		//assert(n>0 && n<=nb_noeuds);
-		Sommet s = new Sommet(n);
-		if(LA.containsKey(s.getSommet()))
-			return LA.get(s.getSommet()).size();
+		if(LA.containsKey(n))
+			return LA.get(n).size();
 		return 0; 
 	}
 	
