@@ -2,7 +2,7 @@ package graphe;
 
 import java.util.ArrayList;
 
-public class GrapheMA implements IGraph{
+public class GrapheMA implements IGraphe{
 
 	// Double tableau de booleens qui represente la matrice adjacente du graphe
 	private boolean[][] MA;
@@ -154,6 +154,10 @@ public class GrapheMA implements IGraph{
 			if(arc.get(i).getSommet1() == s)
 				listArc.add(arc.get(i));
 		}return listArc;
+	}
+	
+	public ArrayList<Arc> getArc(){
+		return arc;
 	}
 	
 }

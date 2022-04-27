@@ -3,6 +3,7 @@ package graphe;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+//import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
@@ -10,7 +11,8 @@ import exception.*;
 
 public class PCCDijkstra{
 
-	private static void estOk(IGraph graphe) throws ArcNegatifNulException, NoPathEx{
+	private static void estOk(IGraphe graphe, int debut, int fin) throws ArcNegatifNulException, NoPathEx{
+		
 		ArrayList<Arc> test = new ArrayList<>(); 
 		for(int i = 0; i < graphe.getNbNoeuds(); i++) {
 			test = graphe.getArcSuccesseur(i+1);
@@ -18,16 +20,41 @@ public class PCCDijkstra{
 				if(test.get(j).getPoids() <= 0)
 					throw new ArcNegatifNulException();
 			}
-		}
+		}test.clear();
 		
-		//ici on doit verifier que le chemin existe, sinon throw new NoPathEx();
+		/*ArrayList<Integer> tab1 = new ArrayList<>(); 
+		ArrayList<Integer> tab2 = new ArrayList<>(); 
+		ArrayList<Integer> tmp = new ArrayList<>(); 
+		ArrayList<Arc> successeur = new ArrayList<>(); 
+
+		tab1.add(debut);
+		int iter = 0;
+		while(!tab1.contains(fin)) {
+			for(int i = 0; i < graphe.getNbNoeuds(); i++) {
+				if(tab1.contains(i)) {
+					tmp.clear();
+					successeur.clear(); successeur.addAll(graphe.getArcSuccesseur(i));
+					for(int j = 0; j < successeur.size(); j++) {
+						tmp.add(successeur.get(j).getSommet2());
+					}
+				}
+			}
+			tab1.clear();
+			tab1.addAll(tmp);
+			iter++;
+			
+			if(iter == 2000)
+				throw new NoPathEx();
+		}*/
+
+		
 	}
 	
-	public static List<Integer> resoudre(IGraph graphe ,int debut, int fin) {
+	public static List<Integer> resoudre(IGraphe graphe ,int debut, int fin) {
 		
 		// /!\ mon code est vraiment basé sur le tableau qu'on a pu faire pour résoudre Djikstra
 		
-		estOk(graphe);
+		estOk(graphe, debut, fin);
 		
 		int poids = 0;
 		int debutStatic = debut;

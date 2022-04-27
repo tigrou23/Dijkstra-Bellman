@@ -12,6 +12,10 @@ public class Arc {
 		poids = p;
 	}
 	
+	public Arc() {
+		this(0, 0, 0);
+	}
+	
 	public int getPoids() {
 		return poids;
 	}
@@ -26,5 +30,11 @@ public class Arc {
 	
 	public String toString() {
 		return sommet1 + " -> " + sommet2;
+	}
+	
+	public void set(Arc a) {
+		sommet1 = a.getSommet1();
+		sommet2 = a.getSommet2();
+		poids = a.getPoids();
 	}
 }

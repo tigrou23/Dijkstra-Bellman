@@ -14,7 +14,7 @@ public class PCCBellmanTest {
 	@Test
 	void resoudreTest() {
 		
-		IGraph g = new GrapheMA(9);
+		IGraphe g = new GrapheMA(9);
 		List<Integer> reponse = new ArrayList<>();
 		
 		//Exercice 3.2
@@ -51,17 +51,21 @@ public class PCCBellmanTest {
 	void estOkTest() {
 		
 		//graphe du sujet
-		IGraph g = new GrapheMA(4);
+		IGraphe g = new GrapheMA(4);
 		g.ajouterArc(1,2,5);
 		g.ajouterArc(1,3,4);
-		g.ajouterArc(3,2,6);
+		g.ajouterArc(3,2,-6);
 		g.ajouterArc(2,4,3);
 		g.ajouterArc(4,3,2);
-		assertThrows(CircuitEx.class, () -> graphe.PCCDijkstra.resoudre(g,1,3));
+		assertThrows(CircuitEx.class, () -> graphe.PCCBellman.resoudre(g,1,3));
+		
+		IGraphe g2 = new GrapheMA(4);
+		g2.ajouterArc(1,2,5);
+		g2.ajouterArc(1,3,4);
+		g2.ajouterArc(2,4,3);
+		g2.ajouterArc(4,3,2);
+		assertThrows(NoPathEx.class, () -> graphe.PCCBellman.resoudre(g2,4,1));
 	}
 	
-
-
-
 }
 

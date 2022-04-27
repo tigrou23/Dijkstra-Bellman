@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
-public class GrapheLA implements IGraph{
+public class GrapheLA implements IGraphe{
 	
 	// Pour chaque noeuds (represente par un entier) une ArrayList d'entier (liste
 	// de tous ses successeurs)
@@ -155,6 +155,10 @@ public class GrapheLA implements IGraph{
 			if(arc.get(i).getSommet1() == s)
 				listArc.add(arc.get(i));
 		}return listArc;
+	}
+
+	public ArrayList<Arc> getArc(){
+		return arc;
 	}
 
 }

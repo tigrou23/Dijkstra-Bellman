@@ -14,7 +14,7 @@ public class PCCDijkstraTest {
 	@Test
 	void resoudreTest() {
 		
-		IGraph g = new GrapheMA(9);
+		IGraphe g = new GrapheMA(9);
 		List<Integer> reponse = new ArrayList<>();
 		
 		//Exercice 3.1
@@ -74,12 +74,40 @@ public class PCCDijkstraTest {
 		reponse.add(1); reponse.add(2); reponse.add(3);
 		assertTrue(reponse.equals(graphe.PCCDijkstra.resoudre(g,1,3)));
 		reponse.clear();
+		
+		//Exercice trouvé sur internet
+		g = new GrapheLA(6);
+		g.ajouterArc(1,2,8);
+		g.ajouterArc(1,5,3);	
+		g.ajouterArc(2,1,7);
+		g.ajouterArc(2,6,10);
+		g.ajouterArc(2,3,7);
+		g.ajouterArc(3,2,6);
+		g.ajouterArc(3,4,3);	
+		g.ajouterArc(4,1,12);
+		g.ajouterArc(4,6,3);		
+		g.ajouterArc(5,2,6);
+		g.ajouterArc(5,4,11);
+		g.ajouterArc(6,5,11);
+		g.ajouterArc(6,3,1);
+		//test 1 -> 6
+		reponse.add(1); reponse.add(5); reponse.add(4); reponse.add(6);
+		assertTrue(reponse.equals(graphe.PCCDijkstra.resoudre(g,1,6)));
+		reponse.clear();
+		//test 1 -> 5
+		reponse.add(1); reponse.add(5);
+		assertTrue(reponse.equals(graphe.PCCDijkstra.resoudre(g,1,5)));
+		reponse.clear();
+		//test 2 -> 3
+		reponse.add(2); reponse.add(3);
+		assertTrue(reponse.equals(graphe.PCCDijkstra.resoudre(g,2,3)));
+		reponse.clear();
 	}
 	
 	@Test
 	void estOkTest() {
 		
-		IGraph g = new GrapheMA(8);
+		IGraphe g = new GrapheMA(8);
 		
 		//Exercice 3.6
 		g.ajouterArc(1,3,1);
@@ -96,7 +124,7 @@ public class PCCDijkstraTest {
 		g.ajouterArc(6,5,3);
 		g.ajouterArc(7,8,4);
 		assertThrows(ArcNegatifNulException.class, () -> graphe.PCCDijkstra.resoudre(g,1,3));
-		
+						
 		/*IGraph g2 = new GrapheMA(9);
 		g2.ajouterArc(1,4,1);
 		g2.ajouterArc(1,3,2);
