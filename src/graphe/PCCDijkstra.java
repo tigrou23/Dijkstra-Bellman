@@ -10,7 +10,7 @@ import java.util.Objects;
 import exception.*;
 
 public class PCCDijkstra{
-
+	
 	private static void estOk(IGraphe graphe, int debut, int fin) throws ArcNegatifNulException, NoPathEx{
 		
 		ArrayList<Arc> test = new ArrayList<>(); 
@@ -55,7 +55,9 @@ public class PCCDijkstra{
 		// /!\ mon code est vraiment basé sur le tableau qu'on a pu faire pour résoudre Djikstra
 		
 		estOk(graphe, debut, fin);
-		
+	
+		System.out.println("Dijkstra");
+
 		int poids = 0;
 		int debutStatic = debut;
 		int somme;
@@ -106,6 +108,8 @@ public class PCCDijkstra{
 		}
 		Collections.reverse(chemin); //explicite
 		System.out.println(poids);
+		for(int i : chemin)
+			System.out.print(i + " ");
 		return chemin;
 	}
 	

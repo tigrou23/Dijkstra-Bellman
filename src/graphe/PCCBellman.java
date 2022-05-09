@@ -18,7 +18,32 @@ import exception.NoPathEx;
 public class PCCBellman {
 
 	private static void estOk(IGraphe graphe, int debut, int fin) throws NoPathEx, CircuitEx{
-
+        
+        ArrayList<Integer> cheminD = new ArrayList<>();
+        ArrayList<Integer> tmpD = new ArrayList<>();
+        cheminD.add(debut);
+        Boolean good = false;
+        while(!cheminD.isEmpty()) {
+            tmpD.clear();
+            Iterator<Integer> chD = cheminD.iterator();
+            while(chD.hasNext()) {
+                int itD = chD.next();
+                chD.remove();
+                for(Arc a : graphe.getArcSuccesseur(itD))
+                    if(!cheminD.contains(a.getSommet2()) && !tmpD.contains(a.getSommet2()))
+                        tmpD.add(a.getSommet2());
+            }
+            cheminD.addAll(tmpD);
+            if(cheminD.contains(fin)) {
+                good=true;
+                break;
+            }
+        } if(!good)
+            throw new NoPathEx();
+		
+	}
+	
+	public static void cycle(IGraphe graphe) {
         for(int i = 1; i < graphe.getNbNoeuds()+1; i++) {
             ArrayList<Integer> suivants = new ArrayList<>();
             ArrayList<Integer> tmp = new ArrayList<>();
@@ -45,35 +70,14 @@ public class PCCBellman {
             if(list.contains(i))
             	throw new CircuitEx();
         }
-        
-        ArrayList<Integer> cheminD = new ArrayList<>();
-        ArrayList<Integer> tmpD = new ArrayList<>();
-        cheminD.add(debut);
-        Boolean good = false;
-        while(!cheminD.isEmpty()) {
-            tmpD.clear();
-            Iterator<Integer> chD = cheminD.iterator();
-            while(chD.hasNext()) {
-                int itD = chD.next();
-                chD.remove();
-                for(Arc a : graphe.getArcSuccesseur(itD))
-                    if(!cheminD.contains(a.getSommet2()) && !tmpD.contains(a.getSommet2()))
-                        tmpD.add(a.getSommet2());
-            }
-            cheminD.addAll(tmpD);
-            if(cheminD.contains(fin)) {
-                good=true;
-                break;
-            }
-        } if(!good)
-            throw new NoPathEx();
-		
 	}
 	
 	public static List<Integer> resoudre(IGraphe graphe ,int debut, int fin) throws ArcNegatifNulException, NoPathEx{
 
 		estOk(graphe, debut, fin);
 			
+		System.out.println("Bellman sans circuit");
+		
 		ArrayList<Integer> chemin = new ArrayList<>(); //va recevoir le chemin final pour accèder de début à fin
 		final int inf = Integer.MAX_VALUE;
 		int rang=0;
@@ -180,6 +184,8 @@ public class PCCBellman {
 		}
 		chemin.add(debut);
 		Collections.reverse(chemin);
+		for(int i : chemin)
+			System.out.print(i + " ");
 		return chemin;
 	}
 }
