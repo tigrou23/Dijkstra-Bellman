@@ -105,6 +105,7 @@ public class PCCDijkstra{
 			chemin.add(temporaire + 1);
 		}
 		Collections.reverse(chemin); //explicite
+		System.out.println(poids);
 		return chemin;
 	}
 	

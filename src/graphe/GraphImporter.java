@@ -8,28 +8,29 @@ import java.util.Scanner;
 public class GraphImporter {
 	public static void main(String[] args) throws NumberFormatException, FileNotFoundException, IOException {
 		Arc df = new Arc();
-		IGraphe g = importer("graphe1.txt", df);
-		System.out.print(g);
-		System.out.println("debut fin : "+ df.getSommet1() + " ==> "+ df.getSommet2());
+		IGraphe g = importer(System.getProperty("user.dir")+ "/graphes/sc/g-100-2.txt", df);
+		System.out.println(PCCDijkstra.resoudre(g, 1, 54));
+		//System.out.print(g);
+		//System.out.println("debut fin : "+ df.getSommet1() + " ==> "+ df.getSommet2());
 		verifierGraphes();
 	}
 
 public static void verifierGraphes() throws FileNotFoundException {
 	IGraphe g;
 	Arc df = new Arc(); 
-	String dirStr = System.getProperty("user.dir")+ "\\graphes\\sc";
-	System.out.println("Working Directory = " + dirStr);
+	String dirStr = System.getProperty("user.dir")+ "/graphes/sc";
+	//System.out.println("Working Directory = " + dirStr);
 	File dir = new File(dirStr);
 	  File[] directoryListing = dir.listFiles();
 	  if (directoryListing != null) {
 	    for (File child : directoryListing) {
-	      System.out.println(child);
+	      //System.out.println(child);
 	      g = importer(child, df);
-	      System.out.println(g.getNbNoeuds() + " sommets");
-	      System.out.println("debut et fin du chemin à trouver : "+ df.getSommet1()+ " ==> "+ df.getSommet2()+"\n");
+	      //System.out.println(g.getNbNoeuds() + " sommets");
+	      //System.out.println("debut et fin du chemin à trouver : "+ df.getSommet1()+ " ==> "+ df.getSommet2()+"\n");
 	    }
 	  } else {
-	    System.out.println("Erreur : "+ dirStr + " n'est pas un réperoire");
+	    //System.out.println("Erreur : "+ dirStr + " n'est pas un réperoire");
 	  }
 }
 
