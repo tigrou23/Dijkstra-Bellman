@@ -3,15 +3,33 @@ package graphe;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
 //import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
-import exception.*;
+import exception.ArcNegatifNulException;
+import exception.CircuitEx;
+import exception.NoPathEx;
 
-public class PCCDijkstra{
+
+public class PCCDijkstra implements AlgoPlusCourt{
 	
-	private static void estOk(IGraphe graphe, int debut, int fin) throws ArcNegatifNulException, NoPathEx{
+	private int poids;
+	private IGraphe graphe;
+	
+	public PCCDijkstra(IGraphe graphe) {
+		this.graphe = graphe;
+		this.poids = 0;
+	}
+	
+	public void cycle() {}
+	
+	public int getPoids() {
+		return poids;
+	}
+	
+	public void estOk(int debut, int fin) throws ArcNegatifNulException, NoPathEx{
 		
 		ArrayList<Arc> test = new ArrayList<>(); 
 		for(int i = 0; i < graphe.getNbNoeuds(); i++) {
@@ -50,14 +68,12 @@ public class PCCDijkstra{
 		
 	}
 	
-	public static List<Integer> resoudre(IGraphe graphe ,int debut, int fin) {
+	public List<Integer> resoudre(int debut, int fin) {
 		
 		// /!\ mon code est vraiment basé sur le tableau qu'on a pu faire pour résoudre Djikstra
 		
-		estOk(graphe, debut, fin);
+		estOk(debut, fin);
 	
-		System.out.println("Dijkstra");
-
 		int poids = 0;
 		int debutStatic = debut;
 		int somme;
@@ -107,9 +123,7 @@ public class PCCDijkstra{
 			chemin.add(temporaire + 1);
 		}
 		Collections.reverse(chemin); //explicite
-		System.out.println(poids);
-		for(int i : chemin)
-			System.out.print(i + " ");
+		this.poids = poids;
 		return chemin;
 	}
 	

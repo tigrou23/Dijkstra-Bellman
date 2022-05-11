@@ -33,17 +33,18 @@ public class PCCDijkstraTest {
 		g.ajouterArc(8,7,2);
 		g.ajouterArc(8,6,4);
 		g.ajouterArc(9,8,10);
+		AlgoPlusCourt a = new PCCDijkstra(g);
 		//test 1 -> 6
 		reponse.add(1); reponse.add(3); reponse.add(8); reponse.add(7); reponse.add(6);
-		assertTrue(reponse.equals(graphe.PCCDijkstra.resoudre(g,1,6)));
+		assertTrue(reponse.equals(a.resoudre(1,6)));
 		reponse.clear();
 		//test 1 -> 7
 		reponse.add(1); reponse.add(3); reponse.add(8); reponse.add(7);
-		assertTrue(reponse.equals(graphe.PCCDijkstra.resoudre(g,1,7)));
+		assertTrue(reponse.equals(a.resoudre(1,7)));
 		reponse.clear();
 		//test 4 -> 5
 		reponse.add(4); reponse.add(5);
-		assertTrue(reponse.equals(graphe.PCCDijkstra.resoudre(g,4,5)));
+		assertTrue(reponse.equals(a.resoudre(4,5)));
 		reponse.clear();
 		
 		//Exercice 3.2
@@ -62,17 +63,18 @@ public class PCCDijkstraTest {
 		g.ajouterArc(7,8,4);
 		g.ajouterArc(9,8,2);
 		g.ajouterArc(10,6,6);
+		AlgoPlusCourt a2 = new PCCDijkstra(g);
 		//test 1 -> 6
 		reponse.add(1); reponse.add(4); reponse.add(10); reponse.add(6);
-		assertTrue(reponse.equals(graphe.PCCDijkstra.resoudre(g,1,6)));
+		assertTrue(reponse.equals(a2.resoudre(1,6)));
 		reponse.clear();
 		//test 2 -> 7
 		reponse.add(2); reponse.add(5); reponse.add(7);
-		assertTrue(reponse.equals(graphe.PCCDijkstra.resoudre(g,2,7)));
+		assertTrue(reponse.equals(a2.resoudre(2,7)));
 		reponse.clear();
 		//test 1 -> 3
 		reponse.add(1); reponse.add(2); reponse.add(3);
-		assertTrue(reponse.equals(graphe.PCCDijkstra.resoudre(g,1,3)));
+		assertTrue(reponse.equals(a2.resoudre(1,3)));
 		reponse.clear();
 		
 		//Exercice trouvé sur internet
@@ -90,17 +92,18 @@ public class PCCDijkstraTest {
 		g.ajouterArc(5,4,11);
 		g.ajouterArc(6,5,11);
 		g.ajouterArc(6,3,1);
+		AlgoPlusCourt a3 = new PCCDijkstra(g);
 		//test 1 -> 6
 		reponse.add(1); reponse.add(5); reponse.add(4); reponse.add(6);
-		assertTrue(reponse.equals(graphe.PCCDijkstra.resoudre(g,1,6)));
+		assertTrue(reponse.equals(a3.resoudre(1,6)));
 		reponse.clear();
 		//test 1 -> 5
 		reponse.add(1); reponse.add(5);
-		assertTrue(reponse.equals(graphe.PCCDijkstra.resoudre(g,1,5)));
+		assertTrue(reponse.equals(a3.resoudre(1,5)));
 		reponse.clear();
 		//test 2 -> 3
 		reponse.add(2); reponse.add(3);
-		assertTrue(reponse.equals(graphe.PCCDijkstra.resoudre(g,2,3)));
+		assertTrue(reponse.equals(a3.resoudre(2,3)));
 		reponse.clear();
 	}
 	
@@ -123,7 +126,8 @@ public class PCCDijkstraTest {
 		g.ajouterArc(6,4,5);
 		g.ajouterArc(6,5,3);
 		g.ajouterArc(7,8,4);
-		assertThrows(ArcNegatifNulException.class, () -> graphe.PCCDijkstra.resoudre(g,1,3));
+		AlgoPlusCourt a = new PCCDijkstra(g);
+		assertThrows(ArcNegatifNulException.class, () -> a.resoudre(1,3));
 						
 		/*IGraph g2 = new GrapheMA(9);
 		g2.ajouterArc(1,4,1);

@@ -16,7 +16,6 @@ public class PCCBellmanTest {
 		
 		IGraphe g = new GrapheMA(9);
 		List<Integer> reponse = new ArrayList<>();
-		
 		//Exercice 3.2
 		g = new GrapheLA(10);
 		g.ajouterArc(1,4,3);
@@ -33,18 +32,41 @@ public class PCCBellmanTest {
 		g.ajouterArc(7,8,4);
 		g.ajouterArc(9,8,2);
 		g.ajouterArc(10,6,6);
+		AlgoPlusCourt a = new PCCBellman(g);
 		//test 1 -> 6
 		reponse.add(1); reponse.add(4); reponse.add(10); reponse.add(6);
-		assertTrue(reponse.equals(graphe.PCCBellman.resoudre(g,1,6)));
+		assertTrue(reponse.equals(a.resoudre(1,6)));
 		reponse.clear();
 		//test 2 -> 7
 		reponse.add(2); reponse.add(5); reponse.add(7);
-		assertTrue(reponse.equals(graphe.PCCBellman.resoudre(g,2,7)));
+		assertTrue(reponse.equals(a.resoudre(2,7)));
 		reponse.clear();
 		//test 1 -> 3
 		reponse.add(1); reponse.add(2); reponse.add(3);
-		assertTrue(reponse.equals(graphe.PCCBellman.resoudre(g,1,3)));
+		assertTrue(reponse.equals(a.resoudre(1,3)));
 		reponse.clear();
+	}
+	
+	@Test
+	void cycleTest() {
+		
+		//graphe du sujet
+		IGraphe g = new GrapheMA(4);
+		AlgoPlusCourt a = new PCCBellman(g);
+		g.ajouterArc(1,2,5);
+		g.ajouterArc(1,3,4);
+		g.ajouterArc(3,2,-6);
+		g.ajouterArc(2,4,3);
+		g.ajouterArc(4,3,2);
+		assertThrows(CircuitEx.class, () -> a.cycle());
+		
+		IGraphe g2 = new GrapheLA(4);
+		AlgoPlusCourt a2 = new PCCBellman(g);
+		g2.ajouterArc(1,2,5);
+		g2.ajouterArc(1,3,4);
+		g2.ajouterArc(2,4,3);
+		g2.ajouterArc(4,3,2);
+		assertThrows(CircuitEx.class, () -> a2.cycle());
 	}
 	
 	@Test
@@ -52,20 +74,14 @@ public class PCCBellmanTest {
 		
 		//graphe du sujet
 		IGraphe g = new GrapheMA(4);
+		AlgoPlusCourt a = new PCCBellman(g);
 		g.ajouterArc(1,2,5);
 		g.ajouterArc(1,3,4);
 		g.ajouterArc(3,2,-6);
 		g.ajouterArc(2,4,3);
 		g.ajouterArc(4,3,2);
-		assertThrows(CircuitEx.class, () -> graphe.PCCBellman.resoudre(g,1,3));
+		assertThrows(NoPathEx.class, () -> a.estOk(4,1));
 		
-		IGraphe g2 = new GrapheMA(4);
-		g2.ajouterArc(1,2,5);
-		g2.ajouterArc(1,3,4);
-		g2.ajouterArc(2,4,3);
-		g2.ajouterArc(4,3,2);
-		assertThrows(NoPathEx.class, () -> graphe.PCCBellman.resoudre(g2,4,1));
 	}
-	
 }
 

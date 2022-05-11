@@ -15,9 +15,17 @@ import exception.ArcNegatifNulException;
 import exception.CircuitEx;
 import exception.NoPathEx;
 
-public class PCCBellman {
+public class PCCBellman implements AlgoPlusCourt{
+	
+	private int poids;
+	private IGraphe graphe;
+	
+	public PCCBellman(IGraphe graphe) {
+		this.graphe = graphe;
+		this.poids = 0;
+	}
 
-	private static void estOk(IGraphe graphe, int debut, int fin) throws NoPathEx, CircuitEx{
+	public void estOk(int debut, int fin) throws NoPathEx, CircuitEx{
         
         ArrayList<Integer> cheminD = new ArrayList<>();
         ArrayList<Integer> tmpD = new ArrayList<>();
@@ -43,7 +51,11 @@ public class PCCBellman {
 		
 	}
 	
-	public static void cycle(IGraphe graphe) {
+	public int getPoids() {
+		return poids;
+	}
+	
+	public void cycle() {
         for(int i = 1; i < graphe.getNbNoeuds()+1; i++) {
             ArrayList<Integer> suivants = new ArrayList<>();
             ArrayList<Integer> tmp = new ArrayList<>();
@@ -72,12 +84,10 @@ public class PCCBellman {
         }
 	}
 	
-	public static List<Integer> resoudre(IGraphe graphe ,int debut, int fin) throws ArcNegatifNulException, NoPathEx{
+	public List<Integer> resoudre(int debut, int fin) throws ArcNegatifNulException, NoPathEx{
 
-		estOk(graphe, debut, fin);
-			
-		System.out.println("Bellman sans circuit");
-		
+		estOk(debut, fin);
+					
 		ArrayList<Integer> chemin = new ArrayList<>(); //va recevoir le chemin final pour accèder de début à fin
 		final int inf = Integer.MAX_VALUE;
 		int rang=0;
@@ -188,4 +198,5 @@ public class PCCBellman {
 			System.out.print(i + " ");
 		return chemin;
 	}
+
 }
