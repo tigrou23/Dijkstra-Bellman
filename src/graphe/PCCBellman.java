@@ -196,8 +196,6 @@ public class PCCBellman implements AlgoPlusCourt{
 		}
 		chemin.add(debut);
 		Collections.reverse(chemin);
-		for(int i : chemin)
-			System.out.print(i + " ");
 		return chemin;
 	}
 
