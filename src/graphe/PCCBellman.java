@@ -188,6 +188,8 @@ public class PCCBellman implements AlgoPlusCourt{
 				if(i.getKey()==sommet) {
 					chemin.add(sommet);
 					sommet=i.getValue();
+					if(chemin.get(chemin.size()-2) != null)
+						this.poids += graphe.getArc(chemin.get(chemin.size()-1), chemin.get(chemin.size()-2)).getPoids();
 					break;
 				}
 			}
