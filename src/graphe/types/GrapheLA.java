@@ -1,8 +1,11 @@
-package graphe;
+package graphe.types;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
+
+import graphe.Arc;
+import graphe.IGraphe;
 
 public class GrapheLA implements IGraphe{
 	
@@ -157,6 +160,21 @@ public class GrapheLA implements IGraphe{
 
 	public ArrayList<Arc> getArc(){
 		return arc;
+	}
+
+	@Override
+	public int getNbSommets() {
+		return nb_noeuds;
+	}
+
+	@Override
+	public int distance(ArrayList<Integer> cheminCalcule) {
+		int cpt=0;
+		for(int i=0; i<cheminCalcule.size()-1;++i) {
+			int j = i+1;
+			cpt+= getArc(cheminCalcule.get(i),cheminCalcule.get(j)).getPoids();
+		}
+		return cpt;
 	}
 
 }

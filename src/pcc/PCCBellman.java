@@ -1,4 +1,4 @@
-package graphe;
+package pcc;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,6 +14,9 @@ import java.util.Set;
 import exception.ArcNegatifNulException;
 import exception.CircuitEx;
 import exception.NoPathEx;
+import graphe.AlgoPlusCourt;
+import graphe.Arc;
+import graphe.IGraphe;
 
 public class PCCBellman implements AlgoPlusCourt{
 	

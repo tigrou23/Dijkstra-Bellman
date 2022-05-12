@@ -12,17 +12,17 @@ import exception.CircuitEx;
 import exception.NoPathEx;
 import graphe.AlgoPlusCourt;
 import graphe.Arc;
-import graphe.GrapheLA;
 import graphe.IGraphe;
-import graphe.PCCBellman;
-import graphe.PCCDijkstra;
+import graphe.types.GrapheLA;
+import pcc.PCCBellman;
+import pcc.PCCDijkstra;
 
 public class Appli {
 	public static void main(String[] args) throws NumberFormatException, FileNotFoundException, IOException {
 		Arc df = new Arc();
-		IGraphe g = importer(System.getProperty("user.dir")+ "/graphes/sc/g-100000-2.txt", df);
-		int debut = 1;
-		int fin = 194;
+		IGraphe g = importer(System.getProperty("user.dir")+ "/graphes/sc/g-1000-1.txt", df);
+		int debut = 173;
+		int fin = 603;
 		int poids = 0;
 		AlgoPlusCourt a;
 		List<Integer> liste = new ArrayList<>();

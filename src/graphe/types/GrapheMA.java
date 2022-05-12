@@ -1,6 +1,9 @@
-package graphe;
+package graphe.types;
 
 import java.util.ArrayList;
+
+import graphe.Arc;
+import graphe.IGraphe;
 
 public class GrapheMA implements IGraphe{
 
@@ -158,6 +161,20 @@ public class GrapheMA implements IGraphe{
 	
 	public ArrayList<Arc> getArc(){
 		return arc;
+	}
+
+	@Override
+	public int getNbSommets() {
+		return nb_noeuds;
+	}
+
+	@Override
+	public int distance(ArrayList<Integer> cheminCalcule) {
+		int cpt=0;
+		for(int i=0; i<cheminCalcule.size()-1;++i)
+			for(int j=1; j<cheminCalcule.size();++j)
+				cpt+= getArc(cheminCalcule.get(i),cheminCalcule.get(j)).getPoids();
+		return cpt;
 	}
 	
 }

@@ -6,7 +6,7 @@ public class Arc {
 	private int sommet2;
 	private int poids;
 	
-	public Arc(int s1, int s2, int p) {
+	public Arc(int s1, int p, int s2) {
 		sommet1 = s1;
 		sommet2 = s2;
 		poids = p;

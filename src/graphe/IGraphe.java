@@ -23,4 +23,9 @@ public interface IGraphe {
 	ArrayList<Arc> getArcSuccesseur(int s);
 	
 	public ArrayList<Arc> getArc();
+
+	int getNbSommets();
+
+	int distance(ArrayList<Integer> cheminCalcule);
+
 }

@@ -3,7 +3,8 @@ package test;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
-import graphe.GrapheLA;
+
+import graphe.types.GrapheLA;
 
 class GrapheLATest {
 	
