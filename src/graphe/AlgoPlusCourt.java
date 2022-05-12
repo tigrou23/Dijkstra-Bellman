@@ -3,8 +3,8 @@ package graphe;
 import java.util.List;
 
 public interface AlgoPlusCourt {
-	void estOk(int debut, int fin);
-	void cycle();
-	List<Integer> resoudre(int debut, int fin);
-	int getPoids();
+	final int INFINI = Integer.MAX_VALUE;
+	void estOk(IGraphe graphe, int debut, int fin);
+	void cycle(IGraphe graphe);
+	int resoudre(IGraphe g, int debut, int fin, List<Integer> chemin);
 }

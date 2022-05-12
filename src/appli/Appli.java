@@ -20,18 +20,19 @@ import graphe.PCCDijkstra;
 public class Appli {
 	public static void main(String[] args) throws NumberFormatException, FileNotFoundException, IOException {
 		Arc df = new Arc();
-		IGraphe g = importer(System.getProperty("user.dir")+ "/graphes/ac/g-100000-2.txt", df);
+		IGraphe g = importer(System.getProperty("user.dir")+ "/graphes/sc/g-100000-2.txt", df);
 		int debut = 1;
 		int fin = 194;
+		int poids = 0;
 		AlgoPlusCourt a;
 		List<Integer> liste = new ArrayList<>();
 		try {
-			a = new PCCBellman(g);
-			a.cycle();
+			a = new PCCBellman();
+			a.cycle(g);
 			try {
 				System.out.println("Bellman sans circuit");
-				liste = a.resoudre(debut, fin);
-				System.out.println(a.getPoids());
+				poids = a.resoudre(g,debut, fin, liste);
+				System.out.println(poids);
 				for(int i : liste)
 					System.out.print(i + " ");
 			}catch(NoPathEx p) {
@@ -39,10 +40,10 @@ public class Appli {
 			}
 		}catch(CircuitEx c) {
 			try {
-				a = new PCCDijkstra(g);
+				a = new PCCDijkstra();
 				System.out.println("Dijkstra");
-				liste = a.resoudre(debut, fin);
-				System.out.println(a.getPoids());
+				poids = a.resoudre(g, debut, fin, liste);
+				System.out.println(poids);
 				for(int i : liste)
 					System.out.print(i + " ");
 			}catch(NoPathEx p) {

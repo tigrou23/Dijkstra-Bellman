@@ -17,15 +17,15 @@ import exception.NoPathEx;
 
 public class PCCBellman implements AlgoPlusCourt{
 	
-	private int poids;
-	private IGraphe graphe;
+//	private int poids;
+//	private IGraphe graphe;
 	
-	public PCCBellman(IGraphe graphe) {
-		this.graphe = graphe;
-		this.poids = 0;
-	}
+//	public PCCBellman(IGraphe graphe) {
+//		this.graphe = graphe;
+//		this.poids = 0;
+//	}
 
-	public void estOk(int debut, int fin) throws NoPathEx, CircuitEx{
+	public void estOk(IGraphe graphe, int debut, int fin) throws NoPathEx, CircuitEx{
         
         ArrayList<Integer> cheminD = new ArrayList<>();
         ArrayList<Integer> tmpD = new ArrayList<>();
@@ -51,11 +51,11 @@ public class PCCBellman implements AlgoPlusCourt{
 		
 	}
 	
-	public int getPoids() {
-		return poids;
-	}
+//	public int getPoids() {
+//		return poids;
+//	}
 	
-	public void cycle() {
+	public void cycle(IGraphe graphe) {
         for(int i = 1; i < graphe.getNbNoeuds()+1; i++) {
             ArrayList<Integer> suivants = new ArrayList<>();
             ArrayList<Integer> tmp = new ArrayList<>();
@@ -84,12 +84,13 @@ public class PCCBellman implements AlgoPlusCourt{
         }
 	}
 	
-	public List<Integer> resoudre(int debut, int fin) throws ArcNegatifNulException, NoPathEx{
+	public int resoudre(IGraphe graphe, int debut, int fin, List<Integer> chemin) throws ArcNegatifNulException, NoPathEx{
 
-		estOk(debut, fin);
+		estOk(graphe, debut, fin);
 					
-		ArrayList<Integer> chemin = new ArrayList<>(); //va recevoir le chemin final pour accèder de début à fin
-		final int inf = Integer.MAX_VALUE;
+		//ArrayList<Integer> chemin = new ArrayList<>(); //va recevoir le chemin final pour accèder de début à fin
+		int distance=0;//le poids qui va etre retourné
+//		final int inf = Integer.MAX_VALUE;
 		int rang=0;
 		/*INITIALISATION DES TABLEAUX*/
 		HashMap<Integer, Integer> d = new HashMap<>(); //tableau des rangs
@@ -189,15 +190,15 @@ public class PCCBellman implements AlgoPlusCourt{
 					chemin.add(sommet);
 					sommet=i.getValue();
 					if(chemin.size()>1)
-							this.poids += graphe.getArc(chemin.get(chemin.size()-1), chemin.get(chemin.size()-2)).getPoids();
+							distance += graphe.getArc(chemin.get(chemin.size()-1), chemin.get(chemin.size()-2)).getPoids();
 					break;
 				}
 			}
 		}
 		chemin.add(debut);
-		this.poids += graphe.getArc(chemin.get(chemin.size()-1), chemin.get(chemin.size()-2)).getPoids();
+		distance += graphe.getArc(chemin.get(chemin.size()-1), chemin.get(chemin.size()-2)).getPoids();
 		Collections.reverse(chemin);
-		return chemin;
+		return distance;
 	}
 
 }
