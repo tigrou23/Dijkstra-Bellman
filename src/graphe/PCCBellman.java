@@ -128,7 +128,7 @@ public class PCCBellman implements AlgoPlusCourt{
 					if(j.getValue()!=null) {
 						int iter = j.getValue().size();
 						for(int i = 0; i<iter;++i) {
-							if(j.getValue().get(i)==k) {
+							if(Objects.equals(j.getValue().get(i), k)) {
 								p.get(j.getKey()).remove(i);
 								--iter;
 							}
@@ -144,7 +144,7 @@ public class PCCBellman implements AlgoPlusCourt{
 		Iterator<Entry<Integer, Integer>> iterator = d.entrySet().iterator();
 		while(iterator.hasNext()) {
 			Map.Entry<Integer, Integer> it = iterator.next();
-			if((it.getKey()!=debut) && (it.getValue()<=d.get(debut))) {
+			if(((it.getKey()!=debut) && (it.getValue()<=d.get(debut)))) {
 				iterator.remove();
 			}
 		}
@@ -195,6 +195,7 @@ public class PCCBellman implements AlgoPlusCourt{
 			}
 		}
 		chemin.add(debut);
+		this.poids += graphe.getArc(chemin.get(chemin.size()-1), chemin.get(chemin.size()-2)).getPoids();
 		Collections.reverse(chemin);
 		return chemin;
 	}

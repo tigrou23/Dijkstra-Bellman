@@ -20,9 +20,9 @@ import graphe.PCCDijkstra;
 public class Appli {
 	public static void main(String[] args) throws NumberFormatException, FileNotFoundException, IOException {
 		Arc df = new Arc();
-		IGraphe g = importer(System.getProperty("user.dir")+ "/graphes/sc/g-100-4.txt", df);
-		int debut = 2;
-		int fin = 64;
+		IGraphe g = importer(System.getProperty("user.dir")+ "/graphes/ac/g-100000-2.txt", df);
+		int debut = 1;
+		int fin = 194;
 		AlgoPlusCourt a;
 		List<Integer> liste = new ArrayList<>();
 		try {
@@ -43,10 +43,6 @@ public class Appli {
 				System.out.println("Dijkstra");
 				liste = a.resoudre(debut, fin);
 				System.out.println(a.getPoids());
-				for(int i : liste)
-					System.out.print(i + " ");
-				a.resoudre(debut, fin);
-				liste = a.resoudre(debut, fin);
 				for(int i : liste)
 					System.out.print(i + " ");
 			}catch(NoPathEx p) {
