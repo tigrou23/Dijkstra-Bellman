@@ -39,9 +39,9 @@ public class GrapheMA implements IGraphe{
 	 * @param n1 le noeud n1
 	 * @param n2 le noeud n2
 	 */
-	public void ajouterArc(int n1, int n2, int poids) {
+	public void ajouterArc(int n1, int poids, int n2) {
 		//assert(n1>0 && n1<=nb_noeuds && n2>0 && n2<=nb_noeuds);
-		Arc arcTMP = new Arc(n1, n2, poids);
+		Arc arcTMP = new Arc(n1, poids, n2);
 		MA[n1 - 1][n2 - 1] = true;
 		arc.add(arcTMP);
 	}

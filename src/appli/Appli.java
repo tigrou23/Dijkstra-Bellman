@@ -13,7 +13,7 @@ import exception.NoPathEx;
 import graphe.Arc;
 import graphe.IGraphe;
 import graphe.types.GrapheLA;
-import pcc.AlgoPlusCourt;
+import graphe.AlgoPlusCourt;
 import pcc.PCCBellman;
 import pcc.PCCDijkstra;
 

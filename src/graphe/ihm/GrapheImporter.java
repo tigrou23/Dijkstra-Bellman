@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import graphe.AlgoPlusCourt;
 import graphe.Arc;
 import graphe.IGraphe;
 import graphe.types.GrapheLA;
-import pcc.AlgoPlusCourt;
 
 public class GrapheImporter {
 	public static void main(String[] args) throws NumberFormatException, FileNotFoundException, IOException {
