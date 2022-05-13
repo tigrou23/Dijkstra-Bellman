@@ -4,12 +4,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
-//import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
 import exception.ArcNegatifNulException;
-import exception.CircuitEx;
 import exception.NoPathEx;
 import graphe.AlgoPlusCourt;
 import graphe.Arc;

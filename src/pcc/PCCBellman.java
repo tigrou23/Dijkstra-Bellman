@@ -1,7 +1,6 @@
 package pcc;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -9,9 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Objects;
-import java.util.Set;
 
-import exception.ArcNegatifNulException;
 import exception.CircuitEx;
 import exception.NoPathEx;
 import graphe.AlgoPlusCourt;
@@ -87,7 +84,7 @@ public class PCCBellman implements AlgoPlusCourt{
         }
 	}
 	
-	public int resoudre(IGraphe graphe, int debut, int fin, List<Integer> chemin) throws ArcNegatifNulException, NoPathEx{
+	public int resoudre(IGraphe graphe, int debut, int fin, List<Integer> chemin) throws NoPathEx{
 
 		estOk(graphe, debut, fin);
 					
