@@ -64,7 +64,7 @@ public class GrapheLA implements IGraphe{
 	 */
 	public boolean aArc(int n1, int n2) {
 		//assert(n1>0 && n1<=nb_noeuds && n2>0 && n2<=nb_noeuds);
-		Arc arcTMP = new Arc(n1, n2, 0);
+		Arc arcTMP = new Arc(n1, 0, n2);
 		if(LA.containsKey(arcTMP.getSommet1()))
 			return LA.get(arcTMP.getSommet1()).contains(arcTMP.getSommet2());
 		return false;

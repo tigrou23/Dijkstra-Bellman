@@ -1,4 +1,4 @@
-package graphe;
+package graphe;//.ihm;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -10,7 +10,6 @@ import java.util.Scanner;
 import graphe.IGraphe;
 import graphe.AlgoPlusCourt;
 import graphe.types.GrapheLA;
-//import pcc.Dijkstra;
 import pcc.PCCDijkstra;
 
 public class GrapheImporter {
@@ -40,7 +39,7 @@ public class GrapheImporter {
 		// ci dessous voici comme afficher la sortie attendue
 		// pour l'exo 3.1 du poly de maths
 		// en supposant que A = 1, B = 2, ... I = 9
-		// il aurait Ã©tÃ© plus pratique d'ailleurs de la mettre dans un fichier texte
+		// il aurait été plus pratique d'ailleurs de la mettre dans un fichier texte
 		// comme pour les autres graphes
 		
 		int nbNoeuds = 9;
@@ -61,14 +60,14 @@ public class GrapheImporter {
 		g.ajouterArc(8,2,7);
 		g.ajouterArc(9,10,8);
 		
-		AlgoPlusCourt pcc = new PCCDijkstra();
+		AlgoPlusCourt resoudrec = new pcc.PCCDijkstra();
 		ArrayList<Integer> chemin = new ArrayList<>();
-		int distance = pcc.resoudre(g, 1, 6, chemin);
+		int distance = resoudrec.resoudre(g, 1, 6, chemin);
 		
 		System.out.println("Dijkstra");
 		System.out.println(distance);
 		for (int s : chemin)
-			System.out.print(s+1 + " ");
+			System.out.print(s + " ");
 		System.out.println();
 	}
 	
@@ -107,10 +106,10 @@ public static void verifierGraphes() throws FileNotFoundException {
 	      System.out.println(child);
 	      g = importer(child, df);
 	      System.out.println(g.getNbSommets() + " sommets");
-	      System.out.println("debut et fin du chemin Ã  trouver : "+ df.getSommet1()+ " ==> "+ df.getSommet2()+"\n");
+	      System.out.println("debut et fin du chemin à trouver : "+ df.getSommet1()+ " ==> "+ df.getSommet2()+"\n");
 	    }
 	  } else {
-	    System.out.println("Erreur : "+ dirStr + " n'est pas un rÃ©peroire");
+	    System.out.println("Erreur : "+ dirStr + " n'est pas un réperoire");
 	  }
 }
 
@@ -138,14 +137,13 @@ public static void verifierGraphes() throws FileNotFoundException {
 		line = sc.nextLine();
 		int nbNodes = Integer.parseInt(line.trim());
 		g = new GrapheLA(nbNodes);
-		//	g = new GrapheLA(nbNodes);
 		Arc a;
 		while (sc.hasNextLine()) {
 			line = sc.nextLine();
-			a = GrapheImporter.parse(line);
+			a = parse(line);
 			if (sc.hasNextLine())
 				g.ajouterArc(a.getSommet1(),  a.getPoids(), a.getSommet2());
-			else {// la derniere ligne n'est pas un arc mais le debut et la fin du chemin Ã  trouver
+			else {// la derniere ligne n'est pas un arc mais le debut et la fin du chemin à trouver
 				df.set(a);
 			}
 		}
@@ -166,7 +164,7 @@ public static void verifierGraphes() throws FileNotFoundException {
 			sc.close();
     		throw new IllegalArgumentException("Pas de reponse dans "+ file);
 		}
-		line = sc.nextLine(); // nom de l'algo recommandÃ©
+		line = sc.nextLine(); // nom de l'algo recommandé
 		line = sc.nextLine(); // distance attendue
 		int distance = Integer.parseInt(line.trim());
 		line = sc.nextLine(); // chemin
