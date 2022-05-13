@@ -1,4 +1,4 @@
-package graphe;//.ihm;
+package graphe.ihm;//.ihm;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import graphe.Arc;
+import graphe.IGraphe;
 import graphe.types.GrapheLA;
 import pcc.AlgoPlusCourt;
 
