@@ -128,6 +128,7 @@ class PlusCourtTest {
 		AlgoPlusCourt algo = new PCCBellman();
 		assertTrue(GrapheImporter.comparer("graphes\\sc\\g-100-1.txt", "reponses\\sc\\r-100-1.txt", algo));	
 	}
+	@Test
 	void testBellman1000() throws NumberFormatException, FileNotFoundException, IOException {
 		AlgoPlusCourt algo = new PCCBellman();
 		assertTrue(GrapheImporter.comparer("graphes\\sc\\g-1000-1.txt", "reponses\\sc\\r-1000-1.txt", algo));	
