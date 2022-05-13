@@ -14,7 +14,6 @@ import java.util.Set;
 import exception.ArcNegatifNulException;
 import exception.CircuitEx;
 import exception.NoPathEx;
-import graphe.AlgoPlusCourt;
 import graphe.Arc;
 import graphe.IGraphe;
 

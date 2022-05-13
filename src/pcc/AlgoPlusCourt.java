@@ -1,6 +1,8 @@
-package graphe;
+package pcc;
 
 import java.util.List;
+
+import graphe.IGraphe;
 
 public interface AlgoPlusCourt {
 	final int INFINI = Integer.MAX_VALUE;

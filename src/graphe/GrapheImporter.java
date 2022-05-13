@@ -7,10 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import graphe.IGraphe;
-import graphe.AlgoPlusCourt;
 import graphe.types.GrapheLA;
-import pcc.PCCDijkstra;
+import pcc.AlgoPlusCourt;
 
 public class GrapheImporter {
 	public static void main(String[] args) throws NumberFormatException, FileNotFoundException, IOException {
@@ -171,6 +169,7 @@ public static void verifierGraphes() throws FileNotFoundException {
 		String[] noeuds = line.split(" ");
 		for(String s : noeuds)
 			chemin.add(Integer.parseInt(s));
+		sc.close();
 		return distance;
 		}
 }
