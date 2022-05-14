@@ -24,8 +24,6 @@ public class GrapheImporter {
 		IGraphe g = importer(fileName, df);
 		System.out.print(g);
 		System.out.println("debut fin : "+ df.getSommet1() + " ==> "+ df.getSommet2());
-		// afficherExo31();
-		// verifierGraphes();
 	}
 	
 	public static String cheminToString(List<Integer> chemin) {
@@ -39,7 +37,7 @@ public class GrapheImporter {
 		// ci dessous voici comme afficher la sortie attendue
 		// pour l'exo 3.1 du poly de maths
 		// en supposant que A = 1, B = 2, ... I = 9
-		// il aurait été plus pratique d'ailleurs de la mettre dans un fichier texte
+		// il aurait Ã©tÃ© plus pratique d'ailleurs de la mettre dans un fichier texte
 		// comme pour les autres graphes
 		
 		int nbNoeuds = 9;
@@ -105,11 +103,11 @@ public static void verifierGraphes() throws FileNotFoundException {
 	    for (File child : directoryListing) {
 	      System.out.println(child);
 	      g = importer(child, df);
-	      System.out.println(g.getNbSommets() + " sommets");
-	      System.out.println("debut et fin du chemin à trouver : "+ df.getSommet1()+ " ==> "+ df.getSommet2()+"\n");
+	      System.out.println(g.getNbNoeuds() + " sommets");
+	      System.out.println("debut et fin du chemin Ã  trouver : "+ df.getSommet1()+ " ==> "+ df.getSommet2()+"\n");
 	    }
 	  } else {
-	    System.out.println("Erreur : "+ dirStr + " n'est pas un réperoire");
+	    System.out.println("Erreur : "+ dirStr + " n'est pas un rÃ©peroire");
 	  }
 }
 
@@ -143,7 +141,7 @@ public static void verifierGraphes() throws FileNotFoundException {
 			a = parse(line);
 			if (sc.hasNextLine())
 				g.ajouterArc(a.getSommet1(),  a.getPoids(), a.getSommet2());
-			else {// la derniere ligne n'est pas un arc mais le debut et la fin du chemin à trouver
+			else {// la derniere ligne n'est pas un arc mais le debut et la fin du chemin Ã  trouver
 				df.set(a);
 			}
 		}
@@ -164,7 +162,7 @@ public static void verifierGraphes() throws FileNotFoundException {
 			sc.close();
     		throw new IllegalArgumentException("Pas de reponse dans "+ file);
 		}
-		line = sc.nextLine(); // nom de l'algo recommandé
+		line = sc.nextLine(); // nom de l'algo recommandÃ©
 		line = sc.nextLine(); // distance attendue
 		int distance = Integer.parseInt(line.trim());
 		line = sc.nextLine(); // chemin

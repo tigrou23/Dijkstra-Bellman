@@ -15,21 +15,6 @@ import graphe.IGraphe;
 
 public class PCCDijkstra implements AlgoPlusCourt {
 
-//	private int poids;
-//	private IGraphe graphe;
-
-//	public PCCDijkstra(IGraphe graphe) {
-//		this.graphe = graphe;
-//		this.poids = 0;
-//	}
-
-//	public void cycle() {
-//	}
-//
-//	public int getPoids() {
-//		return poids;
-//	}
-
 	public void estOk(IGraphe graphe, int debut, int fin) throws ArcNegatifNulException, NoPathEx {
 
 		ArrayList<Arc> test = new ArrayList<>();
@@ -55,7 +40,8 @@ public class PCCDijkstra implements AlgoPlusCourt {
 				chD.remove();
 				passe.add(itD);
 				for (Arc a : graphe.getArcSuccesseur(itD))
-					if (!cheminD.contains(a.getSommet2()) && !tmpD.contains(a.getSommet2()) && !passe.contains(a.getSommet2()))
+					if (!cheminD.contains(a.getSommet2()) && !tmpD.contains(a.getSommet2())
+							&& !passe.contains(a.getSommet2()))
 						tmpD.add(a.getSommet2());
 			}
 			cheminD.addAll(tmpD);
@@ -66,34 +52,20 @@ public class PCCDijkstra implements AlgoPlusCourt {
 		}
 		if (Boolean.FALSE.equals(good))
 			throw new NoPathEx();
-
-
-		/*
-		 * ArrayList<Integer> tab1 = new ArrayList<>(); ArrayList<Integer> tab2 = new
-		 * ArrayList<>(); ArrayList<Integer> tmp = new ArrayList<>(); ArrayList<Arc>
-		 * successeur = new ArrayList<>();
-		 * 
-		 * tab1.add(debut); int iter = 0; while(!tab1.contains(fin)) { for(int i = 0; i
-		 * < graphe.getNbNoeuds(); i++) { if(tab1.contains(i)) { tmp.clear();
-		 * successeur.clear(); successeur.addAll(graphe.getArcSuccesseur(i)); for(int j
-		 * = 0; j < successeur.size(); j++) { tmp.add(successeur.get(j).getSommet2()); }
-		 * } } tab1.clear(); tab1.addAll(tmp); iter++;
-		 * 
-		 * if(iter == 2000) throw new NoPathEx(); }
-		 */
-
 	}
 
 	public int resoudre(IGraphe graphe, int debut, int fin, List<Integer> chemin) {
 
 		// /!\ mon code est vraiment basé sur le tableau qu'on a pu faire pour résoudre
+		// en cours de maths
 		// Djikstra
 		estOk(graphe, debut, fin);
 
 		int poids = 0;
 		int debutStatic = debut;
 		int somme;
-		//ArrayList<Integer> chemin = new ArrayList<>(); // va recevoir le chemin final pour accèder de début à fin
+		// ArrayList<Integer> chemin = new ArrayList<>(); // va recevoir le chemin final
+		// pour accèder de début à fin
 		ArrayList<Arc> listeArc = new ArrayList<Arc>(); // va nous servir à récupérer une liste avec tous les arcs d'un
 														// sommet
 		ArrayList<Integer> tmp = new ArrayList<>();// Cette liste va récupérer tous les poids d'une ligne pour enlever
@@ -171,7 +143,7 @@ public class PCCDijkstra implements AlgoPlusCourt {
 
 	}
 
-	public void cycle(IGraphe graphe) {		
+	public void cycle(IGraphe graphe) {
 	}
 
 }

@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import graphe.types.GrapheLA;
 
 class GrapheLATest {
-	
+
 	private static final int NB_NOEUDS = 6;
 
 	@Test
@@ -40,5 +40,5 @@ class GrapheLATest {
 		assertTrue(g.toString()
 				.contentEquals("1 -> 2 3 4 5 \n" + "2 -> 5 \n" + "3 -> \n" + "4 -> 4 \n" + "5 -> 1 \n" + "6 -> \n"));
 	}
-	
+
 }
