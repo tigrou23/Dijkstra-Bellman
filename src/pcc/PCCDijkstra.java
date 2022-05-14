@@ -88,7 +88,6 @@ public class PCCDijkstra implements AlgoPlusCourt {
 
 		// /!\ mon code est vraiment basé sur le tableau qu'on a pu faire pour résoudre
 		// Djikstra
-		try {
 		estOk(graphe, debut, fin);
 
 		int poids = 0;
@@ -169,10 +168,7 @@ public class PCCDijkstra implements AlgoPlusCourt {
 		}
 		Collections.reverse(chemin); // explicite
 		return poids;
-		}
-		catch(NoPathEx e) {
-			return 0;
-		}
+
 	}
 
 	public void cycle(IGraphe graphe) {		
