@@ -75,7 +75,12 @@ public class PCCBellman implements AlgoPlusCourt {
 	}
 
 	public int resoudre(IGraphe graphe, int debut, int fin, List<Integer> chemin) throws NoPathEx {
-
+		
+		if(debut == fin) {
+			chemin.add(debut);
+			return 0;
+		}
+		
 		estOk(graphe, debut, fin);
 
 		int distance = 0;// le poids qui va etre retourné

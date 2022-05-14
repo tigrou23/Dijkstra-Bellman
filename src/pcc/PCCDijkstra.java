@@ -56,11 +56,16 @@ public class PCCDijkstra implements AlgoPlusCourt {
 
 	public int resoudre(IGraphe graphe, int debut, int fin, List<Integer> chemin) {
 
+		if(debut == fin) {
+			chemin.add(debut);
+			return 0;
+		}
+		
 		// /!\ mon code est vraiment basé sur le tableau qu'on a pu faire pour résoudre
 		// en cours de maths
 		// Djikstra
 		estOk(graphe, debut, fin);
-
+		
 		int poids = 0;
 		int debutStatic = debut;
 		int somme;
