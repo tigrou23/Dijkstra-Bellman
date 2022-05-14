@@ -63,14 +63,12 @@ public class PCCDijkstra implements AlgoPlusCourt {
 		
 		// /!\ mon code est vraiment basé sur le tableau qu'on a pu faire pour résoudre
 		// en cours de maths
-		// Djikstra
+
 		estOk(graphe, debut, fin);
 		
 		int poids = 0;
 		int debutStatic = debut;
 		int somme;
-		// ArrayList<Integer> chemin = new ArrayList<>(); // va recevoir le chemin final
-		// pour accèder de début à fin
 		ArrayList<Arc> listeArc = new ArrayList<Arc>(); // va nous servir à récupérer une liste avec tous les arcs d'un
 														// sommet
 		ArrayList<Integer> tmp = new ArrayList<>();// Cette liste va récupérer tous les poids d'une ligne pour enlever
