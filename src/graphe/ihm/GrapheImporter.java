@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import exception.NoPathEx;
 import graphe.AlgoPlusCourt;
 import graphe.Arc;
 import graphe.IGraphe;
@@ -76,20 +77,31 @@ public class GrapheImporter {
 		Arc df = new Arc();
 		IGraphe g;
 		g = GrapheImporter.importer(fichierGraphe, df);
-		int distanceCalculee = algo.resoudre(g, df.getSommet1(), df.getSommet2(), cheminCalcule);
-		int distanceAttendue = GrapheImporter.importerReponse(fichierReponse, cheminPossible);
-		System.out.println(fichierGraphe + " vs " +  fichierReponse);
-		System.out.println("Chemin possible : "+ cheminToString(cheminPossible));
-		System.out.println("Chemin calcule : "+ cheminToString(cheminCalcule));
-		System.out.println("Distance attendue : " + distanceAttendue);
-		System.out.println("Distance calculee : " + distanceCalculee);
-		if (distanceCalculee != distanceAttendue)
-			return false;
-		int distanceVerifiee = g.distance(cheminCalcule);
-		if (distanceVerifiee == AlgoPlusCourt.INFINI)
-			throw new RuntimeException("Le chemin retourne est invalide");
-		System.out.println("Distance verifiee "+ distanceVerifiee);
-		return true;
+		try {
+			int distanceCalculee = algo.resoudre(g, df.getSommet1(), df.getSommet2(), cheminCalcule);
+			int distanceAttendue = GrapheImporter.importerReponse(fichierReponse, cheminPossible);
+			System.out.println(fichierGraphe + " vs " +  fichierReponse);
+			System.out.println("Chemin possible : "+ cheminToString(cheminPossible));
+			System.out.println("Chemin calcule : "+ cheminToString(cheminCalcule));
+			System.out.println("Distance attendue : " + distanceAttendue);
+			System.out.println("Distance calculee : " + distanceCalculee);
+			if (distanceCalculee != distanceAttendue)
+				return false;
+			int distanceVerifiee = g.distance(cheminCalcule);
+			if (distanceVerifiee == AlgoPlusCourt.INFINI)
+				throw new RuntimeException("Le chemin retourne est invalide");
+			System.out.println("Distance verifiee "+ distanceVerifiee);
+			return true;
+		}
+		
+		catch(NoPathEx e) {
+			StringBuilder sb = new StringBuilder();
+			Scanner sc = new Scanner(new File(fichierReponse));
+			while (sc.hasNext())
+				sb.append(sc.next() + " ");
+			sb.deleteCharAt(sb.length()-1);
+			return ("pas de chemin entre " + df.getSommet1() + " et " + df.getSommet2()).equals(sb.toString());
+		}
 	}
 	
 public static void verifierGraphes() throws FileNotFoundException {
