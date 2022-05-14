@@ -6,8 +6,10 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import exception.*;
-import graphe.*;
+import exception.ArcNegatifNulException;
+import exception.NoPathEx;
+import graphe.AlgoPlusCourt;
+import graphe.IGraphe;
 import graphe.types.GrapheLA;
 import graphe.types.GrapheMA;
 import pcc.PCCDijkstra;
