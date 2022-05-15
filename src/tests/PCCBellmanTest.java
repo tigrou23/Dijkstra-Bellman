@@ -76,7 +76,7 @@ public class PCCBellmanTest {
 		g.ajouterArc(3, -6, 2);
 		g.ajouterArc(2, 3, 4);
 		g.ajouterArc(4, 2, 3);
-		assertThrows(CircuitEx.class, () -> a.cycle(g));
+		assertThrows(CircuitEx.class, () -> a.estOk(g, 1, 1));
 
 	}
 

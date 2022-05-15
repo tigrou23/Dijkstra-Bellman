@@ -18,7 +18,7 @@ import graphe.IGraphe;
 public class PCCBellman implements AlgoPlusCourt {
 
 	public void estOk(IGraphe graphe, int debut, int fin) throws NoPathEx, CircuitEx {
-
+		cycle(graphe);
 		ArrayList<Integer> cheminD = new ArrayList<>();
 		ArrayList<Integer> tmpD = new ArrayList<>();
 		cheminD.add(debut);
