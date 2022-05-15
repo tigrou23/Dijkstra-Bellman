@@ -18,7 +18,7 @@ public class GrapheImporter {
 		String fileName;
 		System.out.println();
 		if (args.length != 1) 
-			fileName = "graphe1.txt";
+			fileName = "graphes/ac/g-10-1.txt";
 		else fileName = args[0];
 		System.out.println("filename = "+ fileName);
 		Arc df = new Arc();
@@ -77,10 +77,11 @@ public class GrapheImporter {
 		Arc df = new Arc();
 		IGraphe g;
 		g = GrapheImporter.importer(fichierGraphe, df);
+		System.out.println(fichierGraphe + " vs " +  fichierReponse);
 		try {
 			int distanceCalculee = algo.resoudre(g, df.getSommet1(), df.getSommet2(), cheminCalcule);
 			int distanceAttendue = GrapheImporter.importerReponse(fichierReponse, cheminPossible);
-			System.out.println(fichierGraphe + " vs " +  fichierReponse);
+			
 			System.out.println("Chemin possible : "+ cheminToString(cheminPossible));
 			System.out.println("Chemin calcule : "+ cheminToString(cheminCalcule));
 			System.out.println("Distance attendue : " + distanceAttendue);
@@ -100,6 +101,8 @@ public class GrapheImporter {
 			while (sc.hasNext())
 				sb.append(sc.next() + " ");
 			sb.deleteCharAt(sb.length()-1);
+			
+			System.out.println("pas de chemin entre " + df.getSommet1() + " et " + df.getSommet2());
 			return ("pas de chemin entre " + df.getSommet1() + " et " + df.getSommet2()).equals(sb.toString());
 		}
 	}
